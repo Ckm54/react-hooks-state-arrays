@@ -3,10 +3,12 @@ import { spicyFoods, getNewSpicyFood } from "../data";
 
 function SpicyFoodList() {
   const [foods, setFoods] = useState(spicyFoods);
+  console.log(foods)
 
   function handleAddFood() {
     const newFood = getNewSpicyFood();
-    console.log(newFood);
+    const newFoodArray = [...foods, newFood];
+    setFoods(newFoodArray)
   }
 
   const foodList = foods.map((food) => (
