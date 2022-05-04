@@ -11,8 +11,18 @@ function SpicyFoodList() {
     setFoods(newFoodArray)
   }
 
+  function handleClick(id){
+    const foodAvailable = [...foods]
+    foodAvailable.forEach((food) => {
+      if(food.id === id){
+        const index = foodAvailable.indexOf(food)
+        foodAvailable.splice(index, 1)
+      }
+    })
+    setFoods(foodAvailable)
+  }
   const foodList = foods.map((food) => (
-    <li key={food.id}>
+    <li key={food.id} onClick={() => handleClick(food.id)}>
       {food.name} | Heat: {food.heatLevel} | Cuisine: {food.cuisine}
     </li>
   ));
