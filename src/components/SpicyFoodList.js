@@ -31,15 +31,28 @@ function SpicyFoodList() {
   // }
 
   /////////UPDATE FOODS HEAT LEVEL
-  function handleClick(id){
-    const newFoodsArray = [...foods]
-    newFoodsArray.forEach((food) => {
+  // function handleClick(id){
+  //   const newFoodsArray = [...foods]
+  //   newFoodsArray.forEach((food) => {
+  //     if(food.id === id) {
+  //       food.heatLevel += 1
+  //     }
+  //   })
+  //   setFoods(newFoodsArray)
+  // }
+
+  //////////UPDATE HEAT LEVEL USING MAP
+  function handleClick(id) { 
+    const newFoodsArray = foods.map((food) => {
       if(food.id === id) {
-        food.heatLevel += 1
+        return {...food, heatLevel: food.heatLevel + 1}
+      } else {
+        return food
       }
-    })
+    });
     setFoods(newFoodsArray)
-  }
+   }
+   
   const foodList = foods.map((food) => (
     <li key={food.id} onClick={() => handleClick(food.id)}>
       {food.name} | Heat: {food.heatLevel} | Cuisine: {food.cuisine}
